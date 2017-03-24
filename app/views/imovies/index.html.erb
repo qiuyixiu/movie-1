@@ -16,7 +16,7 @@
         <tr>
           <td>#</td>
           <td><%= link_to(imovie.电影名称, imovie_path(imovie)) %></td>
-          <td><%= imovie.简介 %></td>
+          <td><%= simple_format(imovie.简介) %></td>
           <td><%= imovie.user.email %> </td>
           <td>
             <% if current_user && current_user == imovie.user %>

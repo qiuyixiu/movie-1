@@ -10,7 +10,7 @@
         <th> 简介 </th>
         <th> 评论数量 </th>
         <th> 最后更新时间 </th>
-        <th colspan="2"</th>
+        <th colspan="5"></th>
       </tr>
     </thead>
 
@@ -19,7 +19,7 @@
         <tr>
           <td> # </td>
           <td> <%= link_to(imovie.电影名称, imovie_path(imovie)) %> </td>
-          <td> <%= imovie.简介 %> </td>
+          <td> <%= simple_format(imovie.简介) %> </td>
           <td> <%= imovie.reviews.count %> </td>
           <td> <%= imovie.updated_at %> </td>
         </tr>
