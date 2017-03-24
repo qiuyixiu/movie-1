@@ -7,7 +7,7 @@ class ImoviesController < ApplicationController
 
   def show
     @imovie = Imovie.find(params[:id])
-    @reviews = @imovie.reviews 
+    @reviews = @imovie.reviews.recent.paginate(:page => params[:page], :per_page => 5)
   end
 
   def edit
