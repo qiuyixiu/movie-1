@@ -41,6 +41,32 @@ class ImoviesController < ApplicationController
     redirect_to imovies_path, alert:  "电影删除"
   end
 
+  def join
+    @imovie = Imovie.find(params[:id])
+
+     if !current_user.is_member_of?(@imovie)
+       current_user.join!(@imovie)
+       flash[:notice] = "收藏电影成功！"
+     else
+       flash[:warning] = "你已经是本电影评论成员了！"
+     end
+
+     redirect_to imovie_path(@imovie)
+   end
+
+   def quit
+     @imovie = Imovie.find(params[:id])
+
+     if current_user.is_member_of?(@imovie)
+       current_user.quit!(@imovie)
+       flash[:alert] = "已退出收藏！"
+     else
+       flash[:warning] = "你不是本电影评论成员了，怎么退出 XD"
+     end
+
+     redirect_to imovie_path(@imovie)
+   end 
+
   private
 
   def find_imovie_and_check_permission

@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324130643) do
+ActiveRecord::Schema.define(version: 20170324212219) do
+
+  create_table "imovie_relationships", force: :cascade do |t|
+    t.integer  "imovie_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "imovies", force: :cascade do |t|
     t.string   "电影名称"

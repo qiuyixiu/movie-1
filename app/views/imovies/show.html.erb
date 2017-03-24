@@ -1,6 +1,16 @@
 <div class="col-md-12">
   <div class="imovie">
 
+    <span class="pull-right">
+      <% if current_user && current_user.is_member_of?(@imovie) %>
+        <lable class="lable label-success"> 本电影评论成员 </lable>
+            <%= link_to("退出收藏", quit_imovie_path(@imovie), method: :post, class: "btn btn-default") %>
+      <% else %>
+        <lable class="label label-warning"> 不是本电影评论成员 </lable>
+            <%= link_to("收藏本电影", join_imovie_path(@imovie), method: :post, class: "btn btn-default") %>
+      <% end %>
+    </span>
+
     <%= link_to("发表评论", new_imovie_review_path(@imovie), class: "btn btn-default pull-right")%>
     <% if current_user && current_user == @imovie.user %>
       <%= link_to("编辑", edit_imovie_path(@imovie), class: "btn btn-primary pull-right")%>
