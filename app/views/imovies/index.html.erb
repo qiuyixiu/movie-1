@@ -8,6 +8,7 @@
         <td>#</td>
         <td>电影名称</td>
         <td>简介</td>
+        <td>创建者</td>
       </tr>
     </thead>
     <tbody>
@@ -16,10 +17,13 @@
           <td>#</td>
           <td><%= link_to(imovie.电影名称, imovie_path(imovie)) %></td>
           <td><%= imovie.简介 %></td>
+          <td><%= imovie.user.email %> </td>
           <td>
-            <%= link_to("编辑", edit_imovie_path(imovie), class: "btn btn-sm btn-default")%>
-            <%= link_to("删除", imovie_path(imovie),      class: "btn btn-sm btn-default",
+            <% if current_user && current_user == imovie.user %>
+              <%= link_to("编辑", edit_imovie_path(imovie), class: "btn btn-sm btn-default")%>
+              <%= link_to("删除", imovie_path(imovie),      class: "btn btn-sm btn-default",
                         method: :delete, data: { confirm: "Are you sure?"} )%>
+            <% end %>
           </td>
         </tr>
       <% end %>
