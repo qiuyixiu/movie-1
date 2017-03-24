@@ -1,9 +1,30 @@
 <div class="col-md-12">
   <div class="imovie">
+
+    <%= link_to("发表评论", new_imovie_review_path(@imovie), class: "btn btn-default pull-right")%>
     <% if current_user && current_user == @imovie.user %>
       <%= link_to("编辑", edit_imovie_path(@imovie), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
   <h2><%= @imovie.电影名称 %></h2>
   <p><%= @imovie.简介 %></p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>评论内容</th>
+        <th>发表者</th>
+        <th>发表时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.内容 %></td>
+          <td><%= review.user.email %></td>
+          <td><%= review.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

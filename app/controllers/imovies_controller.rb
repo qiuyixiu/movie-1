@@ -7,6 +7,7 @@ class ImoviesController < ApplicationController
 
   def show
     @imovie = Imovie.find(params[:id])
+    @reviews = @imovie.reviews 
   end
 
   def edit
@@ -48,7 +49,7 @@ class ImoviesController < ApplicationController
     if current_user != @imovie.user
       redirect_to root_path, alert: "你没有权限。"
     end
-  end 
+  end
 
   def imovie_params
     params.require(:imovie).permit(:电影名称, :简介)

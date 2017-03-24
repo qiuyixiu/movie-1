@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :imovies
+  resources :imovies do
+    resources :reviews
+  end
   root 'imovies#index'
 end
