@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <div class="imovie">
+    <%= link_to("建立电影", new_imovie_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>电影名称</td>
+        <td>简介</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @imovies.each do |imovie| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(imovie.电影名称, imovie_path(imovie)) %></td>
+          <td><%= imovie.简介 %></td>
+          <td>
+            <%= link_to("编辑", edit_imovie_path(imovie), class: "btn btn-sm btn-default")%>
+            <%= link_to("删除", imovie_path(imovie),      class: "btn btn-sm btn-default",
+                        method: :delete, data: { confirm: "Are you sure?"} )%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
