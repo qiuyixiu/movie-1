@@ -1,0 +1,29 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我创建的电影 </h2>
+
+  <table class="talbe">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> 电影名称 </th>
+        <th> 简介 </th>
+        <th> 评论数量 </th>
+        <th> 最后更新时间 </th>
+        <th colspan="2"</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @imovies.each do |imovie| %>
+        <tr>
+          <td> # </td>
+          <td> <%= link_to(imovie.电影名称, imovie_path(imovie)) %> </td>
+          <td> <%= imovie.简介 %> </td>
+          <td> <%= imovie.reviews.count %> </td>
+          <td> <%= imovie.updated_at %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

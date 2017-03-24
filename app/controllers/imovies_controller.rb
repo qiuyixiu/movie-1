@@ -22,6 +22,7 @@ class ImoviesController < ApplicationController
     @imovie.user = current_user
 
     if @imovie.save
+       current_user.join!(@imovie)
        redirect_to imovies_path
     else
        render :new
@@ -65,7 +66,7 @@ class ImoviesController < ApplicationController
      end
 
      redirect_to imovie_path(@imovie)
-   end 
+   end
 
   private
 

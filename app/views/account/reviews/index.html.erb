@@ -1,0 +1,25 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我发表的评论 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> 内容 </th>
+        <th> 电影名称 </th>
+        <th> 最后更新时间 </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tobdy>
+      <% @reviews.each do |review| %>
+         <tr>
+           <td> <%= review.内容 %> </td>
+           <td> <%= review.imovie.电影名称 %> </td>
+           <td> <%= review.updated_at %> </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

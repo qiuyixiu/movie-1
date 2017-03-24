@@ -7,5 +7,12 @@ Rails.application.routes.draw do
     end
     resources :reviews
   end
+
+  namespace :account do
+    resources :imovies
+    resources :reviews
+  end
+
+
   root 'imovies#index'
 end
